@@ -1,0 +1,25 @@
+<article>
+    <div class="blog-post">
+        <h2>Edit Post</h2>
+        <div class="card-body">
+            <form class="update-post-form">
+                <div class="input-spacing">
+                    <label for="input-title">Title</label>
+                    <input type="text" class="form-control" id="input-title" value="{{title}}" />
+                </div>
+                <div class="input-spacing">
+                    <label for="post-content">Content</label>
+                    <textarea name="post-content" id="post-content" rows="3">{{post_content}}</textarea>
+                </div>
+                <div class="input-spacing">
+                    <button type="submit" class="submit-button" id="update-post-btn">Update Post</button>
+                </div>
+                <div class="input-spacing">
+                    <button type="submit" class="submit-button" id="update-post-btn">Delete Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</article>
+
+<script src="/js/update-post.js"></script>

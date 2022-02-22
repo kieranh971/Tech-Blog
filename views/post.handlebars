@@ -1,0 +1,39 @@
+<article>
+    <div class="blog-post">
+        <header class="post-header"> {{title}}
+            <p>Posted by: {{user.username}} on {{format_date date_created}}</p>
+        </header>
+        <div class="card-body">
+            <p class="card-text">{{post_content}}</p>
+        </div>
+    </div>
+</article>
+
+{{#each comments as |comment|}}
+
+<article>
+    <div class="comment-container">
+        <div class="comment-text">
+            <p>{{comment.comment_content}}</p>
+            <p>--{{comment.user.username}}, {{format_date date_created}}</p>
+        </div>
+    </div>
+</article>
+
+{{/each}}
+
+{{#if loggedIn}}
+
+<form data-id="{{id}}" class="comment-form">
+    <div class="comment-container">
+        <div class="card-body">
+            <header>Comment</header>
+            <textarea name="comment-content" id="input-comment" rows="3"></textarea>
+            <button type="submit" class="submit-button">Add Comment</button>
+        </div>
+    </div>
+</form>
+
+{{/if}}
+
+<script src="./comment.js"></script>
