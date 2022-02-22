@@ -1,0 +1,11 @@
+<div id="dashboardContainer">
+    {{#each posts as |post|}}
+    <article class="dashboard-post">
+        <a href="/dashboard/update/{{post.id}}"><h2>{{post.title}}</h2></a>
+        <h3> {{format_date post.date_created}} </h3>
+    </article>
+
+    {{/each}}
+
+    <a href="/dashboard/create" id="new-post-button">Create New Post</a>
+</div>
