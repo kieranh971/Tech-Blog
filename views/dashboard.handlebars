@@ -1,7 +1,11 @@
-<div id="dashboardContainer">
+<div id="dashboard-container">
+
     {{#each posts as |post|}}
+
     <article class="dashboard-post">
-        <a href="/dashboard/update/{{post.id}}"><h2>{{post.title}}</h2></a>
+        <a href="/dashboard/update/{{post.id}}">
+            <h2>{{post.title}}</h2>
+        </a>
         <h3> {{format_date post.date_created}} </h3>
     </article>
 
