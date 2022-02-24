@@ -1,6 +1,8 @@
 const userRoutes = require("express").Router();
 const { User } = require("../../models");
 
+// url here is /api/users
+
 userRoutes.get('/', async (req, res) => {
     try {
         const userData = await User.findAll();
@@ -35,13 +37,13 @@ userRoutes.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
         if (!userData) {
-            res.status(400).json("Incorrect username or password, please try again")
+            res.status(400).json({message: "Incorrect username or password, please try again"})
             return;
         }
         // check if password entered matches user's password
         const validatePassword = await userData.checkPassword(req.body.password);
         if (!validatePassword) {
-            res.status(400).json("Incorrect username or password, please try again")
+            res.status(400).json({message: "Incorrect username or password, please try again"})
             return;
         }
 
@@ -63,7 +65,7 @@ userRoutes.post('/login', async (req, res) => {
 
 // user logout
 userRoutes.post('/logout', (req, res) => {
-    if (!req.session.loggedIn) {
+    if (req.session.loggedIn) {
         req.session.destroy(()=>{
             res.status(204).end();
         });

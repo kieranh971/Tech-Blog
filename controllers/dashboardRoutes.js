@@ -4,7 +4,7 @@ const withAuth = require("../utils/auth");
 
 // url is /dashboard
 
-// gets all user's posts
+// get all user's posts
 router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -61,7 +61,7 @@ router.get("/update/:id", withAuth, async (req, res) => {
       loggedIn: true,
     });
     // }
-    // I don't think I need to check if user since you can only go to your own page
+    // Don't need to check if user since you can only go to your own page
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

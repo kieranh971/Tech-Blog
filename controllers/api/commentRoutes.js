@@ -2,11 +2,13 @@ const commentRoutes = require("express").Router();
 const { Comment } = require("../../models");
 const withAuth = require ("../../utils/auth")
 
+// url here is /api/comments
+
 commentRoutes.get("/", async (req, res) => {
     try {
         const commentData = await Comment.findAll();
         if (!commentData) {
-            res.status(400).json("No users");
+            res.status(400).json("No users found");
             return;
         }
         res.status(200).json(commentData);

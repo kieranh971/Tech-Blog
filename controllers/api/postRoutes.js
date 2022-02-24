@@ -2,6 +2,8 @@ const postRoutes = require("express").Router();
 const { Post } = require("../../models");
 const withAuth = require ("../../utils/auth")
 
+// url here is /api/posts
+
 postRoutes.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll();
@@ -9,7 +11,7 @@ postRoutes.get("/", async (req, res) => {
             res.status(400).json("No posts");
             return;
         }
-        res.status(200).json(commentData);
+        res.status(200).json(postData);
     } catch (err){
         console.log(err);
         res.status(500).json(err);
@@ -43,7 +45,7 @@ postRoutes.post("/:id", withAuth, async (req, res) => {
         });
 
         if (!postData) {
-            res.status(404).json("No posts found with this ID");
+            res.status(404).json({message: "No posts found with this ID"});
             return;
         }
 
